@@ -13,11 +13,6 @@ app.set("view engine", "ejs");
 app.use(cookieParser());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
-mongoose.connect(
-  process.env.MONGOLAB_URI ||
-  process.env.MONGOHQ_URL ||
-  'mongodb://localhost/frando' // plug in the db name you've been using
-);
 
 
 app.get('/', function(req, res) {
