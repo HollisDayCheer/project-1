@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <% include head.ejs %>
+</head>
+<body>
+
+<body>
+<header id = "index-header">
+  <h1 id = "index-title">Frando</h1>
+</header>
+
+<div class = "container">
+  <div class = "row">
+    <div class = "col-md-3 sidebar"> 
+      <ul class="list-group">
+        <a href ="/"><li class="list-group-item">Home</li></a>
+        <a href ="/myevents"><li class="list-group-item">My Events</li></a>
+        <li class="list-group-item">Past Randos</li>
+        <li class="list-group-item">Messages</li>
+        <li class="list-group-item">Idea for event?</li>
+      <a href ="/clearCookies"><li class = "list-group-item">Log Out</li></a>
+
+      </ul>
+    <div class = "col-md-8 content">
+    <h1> 
+    Your upcoming Events!
+    </h1>
+  <ul class = "event-list">
+  <%=user.events%>
+ <% for(var i = user.events.length-1; i > -1 && i > user.events.length-15; i--){ %>
+    <li class = "event-list-item" id = "<%=user.events[i]._id%>">
+      <h1><%= user.events[i].name%></h1>
+      <img src = "<%=user.events[i].imageUrl%>">
+      <p><%= user.events[i].description %></p>
+     </li>
+
+ <% } %>
+ </ul>
+    </div>
+  </div>
+</div>
+</body>
+</html>

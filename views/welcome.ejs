@@ -1,26 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Express - Heroku Starter Project</title>
-  <meta charset="utf-8" />
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Custom -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <script src="/js/app.js"></script>
+<% include head.ejs %>
 </head>
 <body>
 <body>
     <h1 class="welcome-header">Frando</h1>
     <!-- This is the bs3-form boilerplate: -->
       <div class = "button-container">
-    <button class="welcome-button"><a href="/signup" class="button-link" >Sign Up</a></button>
+    <a href="/signup" class="button-link" ><button class="welcome-button">Sign Up</button></a>
         <button class= "welcome-button" data-toggle="modal" data-target="#login-modal"><a href="#" class = "button-link"  >Log in</a></button>
 
       </div>
@@ -28,13 +16,14 @@
         <div class="modal-dialog">
         <div class="loginmodal-container">
           <h1>Login to Your Account</h1><br>
-          <form method="POST" action="/login">
-          <input type="text" name="email" placeholder="email">
-          <input type="password" name="pass" placeholder="Password">
+          <div id="login-fail"></div>
+          <form id="login-form" method="POST" action="/login">
+          <input type="text" name="email" placeholder="email" id="login-email">
+          <input type="password" name="pass" placeholder="Password" id="login-password">
           <input type="submit" name="login" class="login loginmodal-submit" value="Login">
           
           <div class="login-help">
-          <a href="">Register</a> - <a href="">Forgot Password</a>
+          <a href="/usersignup">Register</a>
           </div>
         </div>
       </div>

@@ -1,0 +1,21 @@
+ <div class = "col-md-3 sidebar"> 
+      <% if (cookies.type == "user"){ %>
+      <ul class="list-group">
+        <a href ="/"><li class="list-group-item">Home</li></a>
+        <a href ="/myevents"><li class="list-group-item">My Events</li></a>
+        <li class="list-group-item">Past Randos</li>
+        <li class="list-group-item">Messages</li>
+        <li class="list-group-item">Idea for event?</li>
+      <a href ="/clearCookies"><li class = "list-group-item">Log Out</li></a>
+
+      </ul>
+
+      <% } if (cookies.type == "host"){ %>
+      <ul class="list-group">
+        <a href="./create"<li class="list-group-item">Make New Event</li></a>
+        <li class="list-group-item">Your Event</li>
+        <li class="list-group-item">Past Events</li>
+        <a href ="/clearCookies"><li class = "list-group-item">Log Out</li></a>
+      </ul>
+      <% } %>
+  </div>

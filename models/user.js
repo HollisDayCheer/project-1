@@ -7,8 +7,9 @@ var UserSchema = new Schema({
 	lastName: String,
 	nickName: String,
 	email: String,
-	password: String, //I haven't done the bcrypt stuff yet whoops
-	location: String
+	passwordDigest: String, //I haven't done the bcrypt stuff yet whoops
+	location: String,
+	events: [{type: Schema.Types.ObjectId, ref: 'Event'}] //reference, array of ID's
 });
 
 UserSchema.statics.createSecure = function(firstName, lastName, nickName, email, password, location, callback){
@@ -20,21 +21,19 @@ UserSchema.statics.createSecure = function(firstName, lastName, nickName, email,
 				lastName: lastName,
 				nickName: nickName,
 				email: email,
-				password: hash,
-				location: location
+				passwordDigest: hash,
+				location: location,
+				events: []
 			}, callback);
 		});
 	});
 };
-UserSchema.statics.checkPassword = function(password){
-	  return bcrypt.compareSync(password, this.passwordDigest);
-}
 
 UserSchema.statics.authenticate = function (email, password, callback) {
  // find user by email entered at log in
  this.findOne({email: email}, function (err, foundUser) {
-
    // throw error if can't find user
+   console.log(password)
    if (!foundUser) {
      console.log('No user with email ' + email);
      callback("Error: no user found", null);  
@@ -48,6 +47,9 @@ UserSchema.statics.authenticate = function (email, password, callback) {
    }
  });
 };
+UserSchema.methods.checkPassword = function(password){
+	  return bcrypt.compareSync(password, this.passwordDigest);
+}
 
 var User = mongoose.model('User', UserSchema);
 

@@ -1,0 +1,26 @@
+<html>
+
+<% include head.ejs%>
+<body>
+  <h1>Let's Make an Event!</h1>
+
+
+
+    <form action="api/events" method="POST" id="event-create-form"role="form">
+      <legend>Let's Get to know you!</legend>
+    
+      <div class="form-group">
+        <label for="">Event Name</label>
+        <input type="text" class="form-control" name = "eventName" id="eventName" placeholder="What's your event's name?">
+          <label for="">Description?</label>
+        <textarea class="form-control" name = "eventDescription" id="eventDescription" placeholder="Describe your event!"></textarea>
+       <label for="">imgur url?</label>
+        <input type="text" class="form-control" name = "imageUrl" id="imageUrl" placeholder="give us an imgur url for a fun picture of your image!">
+        <label for="">Tags?</label>
+        <input type="text" class="form-control" name = "eventTags" id="eventTags" placeholder="Give us some one word descriptors">
+       
+      </div>
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</body>
+</html>

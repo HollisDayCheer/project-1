@@ -1,20 +1,7 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Express - Heroku Starter Project</title>
-  <meta charset="utf-8" />
-  <meta http-equiv="Content-type" content="text/html; charset=utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <!-- jQuery -->
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.js"></script>
-  <!-- Bootstrap CSS -->
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css">
-  <!-- Bootstrap JS -->
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-  <!-- Custom -->
-  <link rel="stylesheet" type="text/css" href="/css/main.css">
-  <script src="/js/app.js"></script>
-</head>
+<% include head.ejs %>
+<script src = "/js/eventscript.js"></script>
 <body>
 
 <body>
@@ -24,23 +11,31 @@
 
 <div class = "container">
   <div class = "row">
-    <div class = "col-md-3 sidebar"> 
-      <ul class="list-group">
-        <li class="list-group-item">Make New Rando</li>
-        <li class="list-group-item">Pending Randos</li>
-        <li class="list-group-item">Past Randos</li>
-        <li class="list-group-item">Messages</li>
-        <li class="list-group-item">Idea for event?</li>
-      </ul>
-    </div>
-    <div class = "col-md-9 content">
-    <p>
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec erat mi, dictum non pellentesque quis, pellentesque vel lorem. Vivamus lacinia placerat ante, in lacinia mauris vulputate quis. Nulla facilisi. Nullam fringilla euismod vestibulum. Mauris varius, velit et ornare varius, risus purus pretium nisl, eget pulvinar lacus tellus vel nisi. Donec sed turpis diam. Integer placerat pellentesque euismod. Nulla dolor dui, posuere id diam eget, sollicitudin dapibus purus. Cras commodo, mi id facilisis suscipit, sapien eros vestibulum neque, iaculis tempus magna nunc ut mauris.Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec erat mi, dictum non pellentesque quis, pellentesque vel lorem. Vivamus lacinia placerat ante, in lacinia mauris vulputate quis. Nulla facilisi. Nullam fringilla euismod vestibulum. Mauris varius, velit et ornare varius, risus purus pretium nisl, eget pulvinar lacus tellus vel nisi. Donec sed turpis diam. Integer placerat pellentesque euismod. Nulla dolor dui, posuere id diam eget, sollicitudin dapibus purus. Cras commodo, mi id facilisis suscipit, sapien eros vestibulum neque, iaculis tempus magna nunc ut mauris.
-</p>
+  <% include sidebar.ejs %>
+       <div class = "col-md-9 content">
+   
+    <h1> 
+Upcoming Events!
+</h1>
+  <ul class = "event-list">
+ <% for(var i = events.length-1; i > -1 && i > events.length-15; i--){ %>
+    <li class = "event-list-item" id = "<%=events[i]._id%>">
+      <h1><%= events[i].name%></h1>
+      <img src = "<%=events[i].imageUrl%>">
+      <p><%= events[i].description %></p>
+      <% if (cookies.userID){ %>
+      <button class = "<%=events[i]._id %> signup-button">Sign up!</button>
+      <% } %>
+      <% if(cookies.hostID == events[i].host){ %>
+      <button class ="<%=events[i]._id %> delete-button"> Delete Event</button>
+      <% } %>
+
+ <% } %>
+ </ul>
     </div>
   </div>
 </div>
 </body>
 </html>
 
-
+<input type = "hidden" val = "<%=cookies.userID%>" id = "hidden-userID">
