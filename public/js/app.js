@@ -82,6 +82,7 @@ $(".host-button").on("click", function(e){
     }).done(function(data){
       socket.emit('new event post', data);
     });
+    location.replace("/");
   });
 
   //$("#signup-form").on("submit", function(e){

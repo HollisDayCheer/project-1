@@ -3,12 +3,12 @@ var bcrypt = require("bcrypt")
 var Schema = mongoose.Schema;
 
 var HostSchema = new Schema({
-	businessName: String,
-	description: String,
-	email: String,
-	passwordDigest: String, //I haven't done the bcrypt stuff yet whoops
-	location: String,
-	phone: String,
+	businessName: {type: String, required: true},
+	description: {type: String, required: true},
+	email: {type: String, required: true},
+	passwordDigest: {type: String, required: true}, //I haven't done the bcrypt stuff yet whoops
+	location: {type: String, required: true},
+	phone: {type: String, required: true},
 	type: String,
 });
 

@@ -7,8 +7,8 @@
 
     <div class = "choice-buttons">
       <h2>I am a...</h2>
-      <button class="user-button"><a href="/" class="button-link" >Rando</a></button>
-      <button class= "host-button"><a href="#" class = "button-link"  >Host</a></button>
+      <button id="choice-button" class="btn btn-default user-button"><a href="/" class="button-link" >Rando</a></button>
+      <button id="choice-button" class= "btn btn-defualt host-button"><a href="#" class = "button-link"  >Host</a></button>
     </div>
 
 
@@ -35,7 +35,7 @@
         <input type="text" class="form-control" id="location" placeholder="Where in SF are you?">
 
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" id="choice-button"class="btn btn-primary">Submit</button>
     </form>
 
       <form action="api/hosts" method="POST" id="host-signup"role="form">
@@ -62,7 +62,7 @@
         <input type="text" class="form-control" name="hostLocation" placeholder="Where in SF are you?">
 
       </div>
-      <button type="submit" class="btn btn-primary">Submit</button>
+      <button type="submit" id="choice-button" class="btn btn-primary">Submit</button>
     </form>
 </body>
 </html>
