@@ -23,13 +23,13 @@ app.use(cookieParser());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
 var foundEvents = [];
-var transporter = nodeMailer.createTransport({    
-	service: 'Gmail',
-    auth: {
-      user: process.env.GMAIL_USER,
-      pass: process.env.GMAIL_PASSWORD
-    }
-});
+// var transporter = nodeMailer.createTransport({    
+// 	service: 'Gmail',
+//     auth: {
+//       user: process.env.GMAIL_USER,
+//       pass: process.env.GMAIL_PASSWORD
+//     }
+// });
 
 
 io.on('connection', function(socket){
