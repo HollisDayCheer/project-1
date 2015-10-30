@@ -18,7 +18,6 @@ var io = new ioServer(httpServer);
 
 
 app.set("view engine", "ejs");
-require("dotenv").load();
 app.use(cookieParser());
 app.use(express.static("public"));
 app.use(bodyParser.urlencoded({extended: true}));
