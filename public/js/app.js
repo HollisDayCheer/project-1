@@ -48,9 +48,9 @@ $(".host-button").on("click", function(e){
   });
 
   $(".signup-button").on("click", function(req,res){
-    console.log($(this).attr("class").split(" ")[0]);
+    console.log($(this).attr("class").split(" ")[2]);
     var sendObject = {
-        eventID : $(this).attr("class").split(" ")[0]
+        eventID : $(this).attr("class").split(" ")[2]
     }
     console.log(sendObject);
    $.ajax({
