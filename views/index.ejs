@@ -24,7 +24,7 @@ Upcoming Events!
       <img src = "<%=events[i].imageUrl%>">
       <p><%= events[i].description %></p>
       <% if (cookies.userID){ %>
-      <button id="event-button" class = btn btn-default "<%=events[i]._id %> signup-button">Sign up!</button>
+      <button id="event-button" class = "btn btn-default <%=events[i]._id %> signup-button">Sign up!</button>
       <% } %>
       <% if(cookies.hostID == events[i].host){ %>
       <button id="event-button" class ="<%=events[i]._id %> delete-button"> Delete Event</button>
