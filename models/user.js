@@ -9,7 +9,9 @@ var UserSchema = new Schema({
 	email: String,
 	passwordDigest: String, //I haven't done the bcrypt stuff yet whoops
 	location: String,
-	events: [{type: Schema.Types.ObjectId, ref: 'Event'}] //reference, array of ID's
+	events: [{type: Schema.Types.ObjectId, ref: 'Event'}],
+	type: String
+	 //reference, array of ID's
 });
 
 UserSchema.statics.createSecure = function(firstName, lastName, nickName, email, password, location, callback){
@@ -23,7 +25,8 @@ UserSchema.statics.createSecure = function(firstName, lastName, nickName, email,
 				email: email,
 				passwordDigest: hash,
 				location: location,
-				events: []
+				events: [],
+				type: "user",
 			}, callback);
 		});
 	});
@@ -33,7 +36,7 @@ UserSchema.statics.authenticate = function (email, password, callback) {
  // find user by email entered at log in
  this.findOne({email: email}, function (err, foundUser) {
    // throw error if can't find user
-   console.log(password)
+   console.log(password);
    if (!foundUser) {
      console.log('No user with email ' + email);
      callback("Error: no user found", null);  
